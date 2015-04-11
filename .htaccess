@@ -1,0 +1,76 @@
+AddDefaultCharset utf-8
+IndexIgnore */*
+
+ServerSignature Off
+
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+
+# Mod_Autoindex
+<IfModule mod_autoindex.c>
+  # Запрещаем просмотр содержимого папок
+  Options -Indexes
+</IfModule>
+
+<IfModule mod_expires.c>
+    # включаем кэширование для всех файлов
+    ExpiresActive On
+    # включаем кэширование для некоторых типов файлов сроком на 30 дней (2592000)
+    <FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$">
+        Header set Cache-Control "max-age=2592000"
+    </FilesMatch>
+
+    # отключаем его для HTML-файлов
+    <FilesMatch .*\.(shtml|html|phtml|php)$>
+        ExpiresActive Off
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+    # указываем прокси-серверам передавать заголовок User-Agent
+    # для корректного распознавания сжатия
+    Header append Vary User-Agent env=!dont-vary
+
+    # запрещаем кэширование на уровне прокси-сервера для всех
+    # файлов, для которых у нас выставлено сжатие,
+    <FilesMatch .*\.(css|js|php|phtml|shtml|html|xml)$>
+        Header append Cache-Control: "private, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    Options -FollowSymLinks
+    Options +SymLinksIfOwnerMatch
+    RewriteEngine On
+
+    # deal with admin first
+    RewriteCond %{REQUEST_URI} ^/(admin)
+    RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+    RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
+    RewriteRule ^admin/images/(.*)$ backend/web/images/$1 [L]
+    RewriteRule ^admin/js/(.*)$ backend/web/js/$1 [L]
+
+    RewriteCond %{REQUEST_URI} !^/backend/web/(assets|css|images|js)/
+    RewriteCond %{REQUEST_URI} ^/(admin)
+    RewriteRule ^.*$ backend/web/index.php [L]
+
+
+    RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
+    RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+    RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
+    RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
+    RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
+
+    RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(assets|css|js|images)/
+    RewriteCond %{REQUEST_URI} !index.php
+    RewriteCond %{REQUEST_FILENAME} !-f [OR]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^.*$ frontend/web/index.php
+
+    # Склейка домена с WWW и без WWW в один домен (без www)
+    RewriteCond %{HTTP_HOST} ^www\.bee-cms\.local
+    RewriteRule ^(.*)$ http://bee-cms.local/$1 [R=301,L]
+
+</IfModule>
