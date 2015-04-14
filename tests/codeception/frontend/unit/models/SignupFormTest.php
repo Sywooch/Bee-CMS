@@ -5,7 +5,7 @@ namespace tests\codeception\frontend\unit\models;
 use tests\codeception\frontend\unit\DbTestCase;
 use tests\codeception\common\fixtures\UserFixture;
 use Codeception\Specify;
-use common\modules\user\models\SignupForm;
+use frontend\models\SignupForm;
 
 class SignupFormTest extends DbTestCase
 {
@@ -22,7 +22,7 @@ class SignupFormTest extends DbTestCase
 
         $user = $model->signup();
 
-        $this->assertInstanceOf('common\modules\user\models\User', $user, 'user should be valid');
+        $this->assertInstanceOf('common\models\User', $user, 'user should be valid');
 
         expect('username should be correct', $user->username)->equals('some_username');
         expect('email should be correct', $user->email)->equals('some_email@example.com');

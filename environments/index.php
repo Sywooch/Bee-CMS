@@ -18,9 +18,6 @@
  *         'setCookieValidationKey' => [
  *             // list of config files that need to be inserted with automatically generated cookie validation keys
  *         ],
- *         'createSymlink' => [
- *             // list of symlinks to be created. Keys are symlinks, and values are the targets.
- *         ],
  *     ],
  * ];
  * ```
@@ -29,8 +26,10 @@ return [
     'Development' => [
         'path' => 'dev',
         'setWritable' => [
-            'backend/runtime',
-            'backend/web/assets',
+            'developer/runtime',
+            'developer/web/assets',
+            'administrator/runtime',
+            'administrator/web/assets',
             'frontend/runtime',
             'frontend/web/assets',
         ],
@@ -38,15 +37,18 @@ return [
             'yii',
         ],
         'setCookieValidationKey' => [
-            'backend/config/main-local.php',
+            'developer/config/main-local.php',
+            'administrator/config/main-local.php',
             'frontend/config/main-local.php',
         ],
     ],
     'Production' => [
         'path' => 'prod',
         'setWritable' => [
-            'backend/runtime',
-            'backend/web/assets',
+            'developer/runtime',
+            'developer/web/assets',
+            'administrator/runtime',
+            'administrator/web/assets',
             'frontend/runtime',
             'frontend/web/assets',
         ],
@@ -54,7 +56,8 @@ return [
             'yii',
         ],
         'setCookieValidationKey' => [
-            'backend/config/main-local.php',
+            'developer/config/main-local.php',
+            'administrator/config/main-local.php',
             'frontend/config/main-local.php',
         ],
     ],

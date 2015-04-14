@@ -20,9 +20,9 @@ if (!extension_loaded('mcrypt')) {
 
 $params = getParams();
 $root = str_replace('\\', '/', __DIR__);
-$envs = require("$root/environments/main.php");
+$envs = require("$root/environments/index.php");
 $envNames = array_keys($envs);
-
+$answer = array();
 echo "Yii Application Initialization Tool v1.0\n\n";
 
 $envName = null;
@@ -191,15 +191,5 @@ function setCookieValidationKey($root, $paths)
         $key = strtr(substr(base64_encode($bytes), 0, $length), '+/=', '_-.');
         $content = preg_replace('/(("|\')cookieValidationKey("|\')\s*=>\s*)(""|\'\')/', "\\1'$key'", file_get_contents($file));
         file_put_contents($file, $content);
-    }
-}
-
-function createSymlink($links)
-{
-    foreach ($links as $link => $target) {
-        echo "    symlink $target as $link\n";
-        if (!is_link($link)) {
-            symlink($target, $link);
-        }
     }
 }

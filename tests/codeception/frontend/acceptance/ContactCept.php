@@ -11,9 +11,6 @@ $I->see('Contact', 'h1');
 
 $I->amGoingTo('submit contact form with no data');
 $contactPage->submit([]);
-if (method_exists($I, 'wait')) {
-    $I->wait(3); // only for selenium
-}
 $I->expectTo('see validations errors');
 $I->see('Contact', 'h1');
 $I->see('Name cannot be blank', '.help-block');
@@ -30,9 +27,6 @@ $contactPage->submit([
     'body' => 'test content',
     'verifyCode' => 'testme',
 ]);
-if (method_exists($I, 'wait')) {
-    $I->wait(3); // only for selenium
-}
 $I->expectTo('see that email adress is wrong');
 $I->dontSee('Name cannot be blank', '.help-block');
 $I->see('Email is not a valid email address.', '.help-block');
@@ -48,7 +42,4 @@ $contactPage->submit([
     'body' => 'test content',
     'verifyCode' => 'testme',
 ]);
-if (method_exists($I, 'wait')) {
-    $I->wait(3); // only for selenium
-}
 $I->see('Thank you for contacting us. We will respond to you as soon as possible.');

@@ -2,32 +2,22 @@
 namespace frontend\controllers;
 
 use Yii;
-//use yii\base\ViewContextInterface;
-
-use common\modules\user\models\LoginForm;
-use common\modules\user\models\PasswordResetRequestForm;
-use common\modules\user\models\ResetPasswordForm;
-use common\modules\user\models\SignupForm;
-
-use common\modules\contacts\models\ContactForm;
-
+use common\models\LoginForm;
+use frontend\models\PasswordResetRequestForm;
+use frontend\models\ResetPasswordForm;
+use frontend\models\SignupForm;
+use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-use common\modules\bee\BeeModule;
-
 /**
  * Site controller
  */
-class SiteController extends Controller //implements ViewContextInterface
+class SiteController extends Controller
 {
-//    public function getViewPath(){
-//        return Yii::getAlias('@frontend/templates/base');
-//    }
-
     /**
      * @inheritdoc
      */
@@ -77,11 +67,6 @@ class SiteController extends Controller //implements ViewContextInterface
 
     public function actionIndex()
     {
-        $this->getView()->theme = Yii::createObject([
-            'class' => '\yii\base\Theme',
-            'pathMap' => ['@app/views' => '@frontend/templates/base'],
-            'baseUrl' => '@frontend/templates/base',
-        ]);
         return $this->render('index');
     }
 

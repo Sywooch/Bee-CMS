@@ -4,7 +4,7 @@ namespace tests\codeception\frontend\unit\models;
 
 use tests\codeception\frontend\unit\DbTestCase;
 use tests\codeception\common\fixtures\UserFixture;
-use common\modules\user\models\ResetPasswordForm;
+use frontend\models\ResetPasswordForm;
 
 class ResetPasswordFormTest extends DbTestCase
 {

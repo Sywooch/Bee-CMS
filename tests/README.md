@@ -46,9 +46,15 @@ After creating and setting up the advanced application, follow these steps to pr
    codecept build
    codecept run
    
-   # backend tests
+   # administrator tests
    
-   cd backend
+   cd administrator
+   codecept build
+   codecept run
+
+   # developer tests
+
+   cd developer
    codecept build
    codecept run
     

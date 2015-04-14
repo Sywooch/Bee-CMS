@@ -4,7 +4,7 @@ namespace tests\codeception\frontend\unit\models;
 
 use Yii;
 use tests\codeception\frontend\unit\TestCase;
-use common\modules\contacts\models\ContactForm;
+use frontend\models\ContactForm;
 
 class ContactFormTest extends TestCase
 {
