@@ -1,5 +1,5 @@
 <?php
-use administrator\web\templates\base\desktop\assets\AppAsset;
+use administrator\web\templates\base\mobile\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -56,7 +56,7 @@ AppAsset::register($this);
         ]) ?>
         <?= $content ?>
         <?= Yii::getAlias('@webroot'); ?>
-        <h2>administrator\web\templates\mobile\desktop</h2>
+        <h2>administrator\web\templates\BASE\mobile</h2>
     </div>
 </div>
 

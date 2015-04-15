@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use frontend\web\templates\base\desktop\assets\AppAsset;
+use frontend\web\templates\base\tablet\assets\AppAsset;
 use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
@@ -60,7 +60,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= Yii::getAlias('@webroot') ?>
-        <h2>frontend\templates\desktop\desktop</h2>
+        <h2>frontend\templates\BASE\tablet</h2>
         <?= $content ?>
         </div>
     </div>

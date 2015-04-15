@@ -1,5 +1,5 @@
 <?php
-use administrator\web\templates\base\desktop\assets\AppAsset;
+use developer\web\templates\base\tablet\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -55,8 +55,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
-        <?= Yii::getAlias('@webroot'); ?>
-        <h2>administrator\web\templates\desktop\desktop</h2>
+        <h2>developer\web\templates\BASE\tablet</h2>
     </div>
 </div>
 

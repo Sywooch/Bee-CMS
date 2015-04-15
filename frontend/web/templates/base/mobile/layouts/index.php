@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
+use frontend\web\templates\base\mobile\assets\AppAsset;
 use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
@@ -59,7 +59,8 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <h2>app\views\layouts</h2>
+        <?= Yii::getAlias('@webroot') ?>
+        <h2>frontend\templates\BASE\mobile</h2>
         <?= $content ?>
         </div>
     </div>

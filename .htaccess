@@ -66,12 +66,13 @@ ServerSignature Off
     RewriteRule ^.*$ administrator/web/index.php [L]
 
 
-    RewriteCond %{REQUEST_URI} ^/(assets|templates|images)
+    RewriteCond %{REQUEST_URI} ^/(assets|templates|images|cache)
     RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
     RewriteRule ^templates/(.*)$ frontend/web/templates/$1 [L]
     RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
+    RewriteRule ^images/(.*)$ frontend/web/cache/$1 [L]
 
-    RewriteCond %{REQUEST_URI} !^/(developer|administrator|frontend)/web/(assets|templates|images)/
+    RewriteCond %{REQUEST_URI} !^/(developer|administrator|frontend)/web/(assets|templates|images|cache)/
     RewriteCond %{REQUEST_URI} !index.php
     RewriteCond %{REQUEST_FILENAME} !-f [OR]
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -4,6 +4,13 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
+
+    <?php
+//    echo '<pre>';
+//    print_r($this->context);
+//    echo '</pre>';
+    ?>
+
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 

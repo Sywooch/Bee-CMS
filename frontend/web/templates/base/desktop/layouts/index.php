@@ -60,7 +60,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= Yii::getAlias('@webroot') ?>
-        <h2>frontend\templates\mobile\desktop</h2>
+        <h2>frontend\templates\BASE\desktop</h2>
         <?= $content ?>
         </div>
     </div>

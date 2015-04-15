@@ -10,6 +10,12 @@ $params = yii\helpers\ArrayHelper::merge(
 );
 
 $config = [
+    'id' => 'app-common',
+    'name' => 'BeeCMS',
+    'version' => '1.0',
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'ru-RU',
+    'layout' => 'index',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'db' => isset($params['db']) ? $params['db'] : [],

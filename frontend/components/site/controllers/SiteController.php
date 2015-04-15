@@ -1,12 +1,13 @@
 <?php
-namespace frontend\controllers;
+namespace frontend\components\site\controllers;
 
 use Yii;
+use yii\base\ViewContextInterface;
 use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
+use frontend\components\site\models\PasswordResetRequestForm;
+use frontend\components\site\models\ResetPasswordForm;
+use frontend\components\site\models\SignupForm;
+use frontend\components\site\models\ContactForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -16,8 +17,25 @@ use yii\filters\AccessControl;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends Controller implements ViewContextInterface
 {
+    public function init(){
+        /* Установка шаблона относительно устройства входа */
+        $enterDevice = \common\controllers\TemplateUiController::getDevice();
+        $this->getView()->theme = Yii::createObject([
+            'class' => '\yii\base\Theme',
+            'pathMap' => ['@frontend/views' => Yii::getAlias('@webroot/templates/base/'.$enterDevice)],
+        ]);
+    }
+
+    /*
+     * Установка пути для Vievs данного компонента
+     */
+    public function getViewPath()
+    {
+        return \common\controllers\CoreController::getComponentViewPath(__DIR__);
+    }
+
     /**
      * @inheritdoc
      */
@@ -67,6 +85,13 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        // Задание шаблона
+//        $this->getView()->theme = Yii::createObject([
+//            'class' => '\yii\base\Theme',
+//            'pathMap' => ['@frontend/views' => Yii::getAlias('@webroot/templates/base/mobile')],
+//            'baseUrl' => Yii::getAlias('@webroot/templates/base/mobile'),
+//        ]);
+
         return $this->render('index');
     }
 

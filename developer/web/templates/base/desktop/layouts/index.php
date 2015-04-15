@@ -55,7 +55,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
-        <h2>developer\web\templates\desktop\desktop</h2>
+        <h2>developer\web\templates\BASE\desktop</h2>
     </div>
 </div>
 

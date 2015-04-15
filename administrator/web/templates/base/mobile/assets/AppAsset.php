@@ -1,5 +1,5 @@
 <?php
-namespace administrator\web\templates\base\desktop\assets;
+namespace administrator\web\templates\base\mobile\assets;
 
 use yii\web\AssetBundle;
 
@@ -11,8 +11,8 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '/administrator/web/templates/base/desktop';
-    public $baseUrl = '/administrator/web/templates/base/desktop';
+    public $basePath = '/administrator/web/templates/base/mobile';
+    public $baseUrl = '/administrator/web/templates/base/mobile';
     public $css = [
         'css/styles.css'
     ];
