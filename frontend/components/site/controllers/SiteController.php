@@ -13,6 +13,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use \common\controllers\TemplateUiController;
 
 /**
  * Site controller
@@ -21,10 +22,10 @@ class SiteController extends Controller implements ViewContextInterface
 {
     public function init(){
         /* Установка шаблона относительно устройства входа */
-        $enterDevice = \common\controllers\TemplateUiController::getDevice();
+        $enterDevice = TemplateUiController::getDevice();
         $this->getView()->theme = Yii::createObject([
             'class' => '\yii\base\Theme',
-            'pathMap' => ['@frontend/views' => Yii::getAlias('@webroot/templates/base/'.$enterDevice)],
+            'pathMap' => ['@frontend/views' => Yii::getAlias('@frontend/templates/base/'.$enterDevice)],
         ]);
     }
 

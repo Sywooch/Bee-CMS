@@ -2,8 +2,7 @@
 namespace common\controllers;
 
 use Yii;
-use yii\base\BootstrapInterface;
-use \common\controllers\Mobile_Detect;
+//use yii\base\BootstrapInterface;
 
 
 /**
@@ -20,11 +19,11 @@ class TemplateUiController // implements BootstrapInterface
         );
     }
 
-    public function getDevice () {
+    public static function getDevice () {
         // Safety check.
         $layoutTypes = TemplateUiController::layoutTypes();
         if(!file_exists(__DIR__.'/Mobile_Detect.php')){ return $layoutTypes[0]; }
-        $detect = new Mobile_Detect;
+        $detect = new \common\controllers\Mobile_Detect;
         $isMobile = $detect->isMobile();
         $isTablet = $detect->isTablet();
 

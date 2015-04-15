@@ -48,31 +48,34 @@ ServerSignature Off
     # deal with admin first
     RewriteCond %{REQUEST_URI} ^/(dev)
     RewriteRule ^dev/assets/(.*)$ developer/web/assets/$1 [L]
-    RewriteRule ^dev/templates/(.*)$ developer/web/templates/$1 [L]
+    RewriteRule ^dev/templates/(.*)$ developer/templates/$1 [L]
     RewriteRule ^dev/images/(.*)$ developer/web/images/$1 [L]
 
-    RewriteCond %{REQUEST_URI} !^/developer/web/(assets|templates|images)/
+    RewriteCond %{REQUEST_URI} !^/developer/web/(assets|images)/
+    RewriteCond %{REQUEST_URI} !^/developer/(templates)/
     RewriteCond %{REQUEST_URI} ^/(dev)
     RewriteRule ^.*$ developer/web/index.php [L]
 
 
     RewriteCond %{REQUEST_URI} ^/(admin)
     RewriteRule ^admin/assets/(.*)$ administrator/web/assets/$1 [L]
-    RewriteRule ^admin/templates/(.*)$ administrator/web/templates/$1 [L]
+    RewriteRule ^admin/templates/(.*)$ administrator/templates/$1 [L]
     RewriteRule ^admin/images/(.*)$ administrator/web/images/$1 [L]
 
-    RewriteCond %{REQUEST_URI} !^/administrator/web/(assets|templates|images)/
+    RewriteCond %{REQUEST_URI} !^/administrator/web/(assets|images)/
+    RewriteCond %{REQUEST_URI} !^/administrator/(templates)/
     RewriteCond %{REQUEST_URI} ^/(admin)
     RewriteRule ^.*$ administrator/web/index.php [L]
 
 
     RewriteCond %{REQUEST_URI} ^/(assets|templates|images|cache)
     RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
-    RewriteRule ^templates/(.*)$ frontend/web/templates/$1 [L]
+    RewriteRule ^templates/(.*)$ frontend/templates/$1 [L]
     RewriteRule ^images/(.*)$ frontend/web/images/$1 [L]
     RewriteRule ^images/(.*)$ frontend/web/cache/$1 [L]
 
-    RewriteCond %{REQUEST_URI} !^/(developer|administrator|frontend)/web/(assets|templates|images|cache)/
+    RewriteCond %{REQUEST_URI} !^/(developer|administrator|frontend)/web/(assets|images|cache)/
+    RewriteCond %{REQUEST_URI} !^/(developer|administrator|frontend)/(templates)/
     RewriteCond %{REQUEST_URI} !index.php
     RewriteCond %{REQUEST_FILENAME} !-f [OR]
     RewriteCond %{REQUEST_FILENAME} !-d

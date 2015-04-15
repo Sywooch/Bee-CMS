@@ -7,22 +7,22 @@ return [
         'theme' => [
             'pathMap' => [
                 '@administrator/views' => [
-                    Yii::getAlias('@webroot/templates/base/desktop'),
-                    Yii::getAlias('@webroot/templates/base/tablet'),
-                    Yii::getAlias('@webroot/templates/base/mobile')
+                    Yii::getAlias('@administrator/templates/base/desktop'),
+                    Yii::getAlias('@administrator/templates/base/tablet'),
+                    Yii::getAlias('@administrator/templates/base/mobile')
                 ],
                 '@administrator/modules' => [
-                    Yii::getAlias('@webroot/templates/base/desktop/modules'),
-                    Yii::getAlias('@webroot/templates/base/tablet/modules'),
-                    Yii::getAlias('@webroot/templates/base/mobile/modules')
+                    Yii::getAlias('@administrator/templates/base/desktop/modules'),
+                    Yii::getAlias('@administrator/templates/base/tablet/modules'),
+                    Yii::getAlias('@administrator/templates/base/mobile/modules')
                 ],
                 '@administrator/widgets' => [
-                    Yii::getAlias('@webroot/templates/base/desktop/widgets'),
-                    Yii::getAlias('@webroot/templates/base/tablet/widgets'),
-                    Yii::getAlias('@webroot/templates/base/mobile/widgets')
+                    Yii::getAlias('@administrator/templates/base/desktop/widgets'),
+                    Yii::getAlias('@administrator/templates/base/tablet/widgets'),
+                    Yii::getAlias('@administrator/templates/base/mobile/widgets')
                 ],
             ],
-            'baseUrl' => Yii::getAlias('@webroot/templates/base/desktop'),
+            'baseUrl' => Yii::getAlias('@administrator/templates/base/desktop'),
         ],
     ],
 ];

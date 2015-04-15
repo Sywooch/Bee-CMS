@@ -9,7 +9,7 @@ use yii\web\Controller;
  */
 class CoreController extends Controller
 {
-    function getComponentViewPath($controllerPath) {
+    public static function getComponentViewPath($controllerPath) {
         return $controllerPath.'/../views';
     }
 }
