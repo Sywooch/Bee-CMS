@@ -5,9 +5,7 @@
  * @param baseUrl - Удалить префикс "web/" в URL (При использовании Apache в качестве веб-сервера)
  */
 return [
-    'request' => [
-        'baseUrl' => '',
-        'enableCsrfValidation' => true,
-        'cookieValidationKey' => '8JB0z0pMnWauQAkw3bDKW9zyQtPP4FuK',
-    ],
+    'baseUrl' => '',
+    'enableCsrfValidation' => true,
+    'cookieValidationKey' => '8JB0z0pMnWauQAkw3bDKW9zyQtPP4FuK',
 ];

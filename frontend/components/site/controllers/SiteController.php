@@ -13,7 +13,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use \common\controllers\TemplateUiController;
+use \common\libs\DeviceDetector\controllers\MobileDetector;
 
 /**
  * Site controller
@@ -22,11 +22,14 @@ class SiteController extends Controller implements ViewContextInterface
 {
     public function init(){
         /* Установка шаблона относительно устройства входа */
-        $enterDevice = TemplateUiController::getDevice();
+        $enterDevice = MobileDetector::getDevice();
         $this->getView()->theme = Yii::createObject([
             'class' => '\yii\base\Theme',
             'pathMap' => ['@frontend/views' => Yii::getAlias('@frontend/templates/base/'.$enterDevice)],
         ]);
+
+        /* Если нужно задать язык который выбрал пользователь, а не из настроек */
+        //\Yii::$app->language = 'en-US';
     }
 
     /*
@@ -34,7 +37,7 @@ class SiteController extends Controller implements ViewContextInterface
      */
     public function getViewPath()
     {
-        return \common\controllers\CoreController::getComponentViewPath(__DIR__);
+        return \common\libs\Core\controllers\CoreController::getComponentViewPath(__DIR__);
     }
 
     /**
@@ -65,6 +68,25 @@ class SiteController extends Controller implements ViewContextInterface
                     'logout' => ['post'],
                 ],
             ],
+//            'rateLimiter' => [
+//                'class' => \yii\filters\RateLimiter::className(),
+////                'only' => ['index'],
+//                'enableRateLimitHeaders' => true,
+//                'errorMessage' => 'Превышен лимит обращений',
+//            ],
+
+//            'pageCache' => [
+//                'class' => 'yii\filters\PageCache',
+////                'only' => ['index'],
+//                'duration' => 60,
+//                'variations' => [
+//                    \Yii::$app->language,
+//                ],
+//                'dependency' => [
+//                    'class' => 'yii\caching\DbDependency',
+//                    'sql' => 'SELECT COUNT(*) FROM feq2d_page',
+//                ],
+//            ],
         ];
     }
 
@@ -84,7 +106,7 @@ class SiteController extends Controller implements ViewContextInterface
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($path = null, $id = null)
     {
         // Задание шаблона
 //        $this->getView()->theme = Yii::createObject([
@@ -92,8 +114,10 @@ class SiteController extends Controller implements ViewContextInterface
 //            'pathMap' => ['@frontend/views' => Yii::getAlias('@webroot/templates/base/mobile')],
 //            'baseUrl' => Yii::getAlias('@webroot/templates/base/mobile'),
 //        ]);
-
-        return $this->render('index');
+        return $this->render('index', [
+            'path' => $path,
+            'id' => $id,
+        ]);
     }
 
     public function actionLogin()

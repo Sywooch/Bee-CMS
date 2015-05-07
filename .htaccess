@@ -45,6 +45,12 @@ ServerSignature Off
     Options +SymLinksIfOwnerMatch
     RewriteEngine On
 
+    # Delet last slash for all links
+    RewriteBase /
+    RewriteCond %{HTTP_HOST} (.*)
+    RewriteCond %{REQUEST_URI} /$ [NC]
+    RewriteRule ^(.*)(/)$ $1 [L,R=301]
+
     # deal with admin first
     RewriteCond %{REQUEST_URI} ^/(dev)
     RewriteRule ^dev/assets/(.*)$ developer/web/assets/$1 [L]

@@ -18,7 +18,29 @@ return [
     'components' => [
         'view' => $components['view'],
         'request' => $components['request'],
+        'urlManager' => [
+            'rules' => [
+//                '/'                             => 'site/index',
+//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ],
+        ],
 
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'common\libs\Core\controllers\BeePhpMessageSource',
+    //            'sourceLanguage' => 'en-US', // исходный язык
+    //            'language' => 'ru-RU', // язык перевода
+                    'basePath' => __DIR__.'/../../frontend/language',
+                    'on missingTranslation' => ['common\libs\Core\Language\TranslationEventHandler', 'handleMissingTranslation'],
+                ],
+            ],
+        ],
+
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+//            'keyPrefix' => 'myapp_',
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

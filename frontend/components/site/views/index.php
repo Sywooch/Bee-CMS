@@ -1,4 +1,7 @@
 <?php
+use yii\helpers\Html;
+use yii\i18n\MessageSource;
+
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 ?>
@@ -7,9 +10,13 @@ $this->title = 'My Yii Application';
 
     <?php
 //    echo '<pre>';
-//    print_r($this->context);
+//    print_r(Yii::$aliases);
 //    echo '</pre>';
     ?>
+    <br><br>
+    <h1><?= $path.'::'.$id ?></h1>
+
+
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

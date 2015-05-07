@@ -1,5 +1,5 @@
 <?php
-namespace common\controllers;
+namespace common\libs\DeviceDetector\vendor;
 /**
  * Mobile Detect Library
  * =====================

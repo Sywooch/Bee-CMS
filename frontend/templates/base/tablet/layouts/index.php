@@ -36,6 +36,17 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
+                [
+                    'label' => 'Styles',
+                    'items' => [
+                        '<li class="dropdown-header">Set your style</li>',
+                        '<li class="divider"></li>',
+                        ['label' => 'desktop', 'url' => '?layoutType=desktop'],
+                        ['label' => 'tablet', 'url' => '?layoutType=tablet'],
+                        ['label' => 'mobile', 'url' => '?layoutType=mobile'],
+                        ['label' => 'По умолчанию', 'url' => '?layoutType=unset'],
+                    ],
+                ],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -59,7 +70,6 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <?= Yii::getAlias('@webroot') ?>
         <h2>BASE\tablet</h2>
         <?= $content ?>
         </div>

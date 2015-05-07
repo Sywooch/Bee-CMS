@@ -1,30 +1,30 @@
 <?php
-$params = yii\helpers\ArrayHelper::merge(
-    file_exists(__DIR__ . '/_db.php') ? require(__DIR__ . '/_db.php') : [],
-    file_exists(__DIR__ . '/_url.php') ? require(__DIR__ . '/_url.php') : [],
-    file_exists(__DIR__ . '/_user.php') ? require(__DIR__ . '/_user.php') : [],
-    file_exists(__DIR__ . '/_mail.php') ? require(__DIR__ . '/_mail.php') : [],
-    file_exists(__DIR__ . '/_request.php') ? require(__DIR__ . '/_request.php') : [],
-    file_exists(__DIR__ . '/_session.php') ? require(__DIR__ . '/_session.php') : [],
-    file_exists(__DIR__ . '/_translation.php') ? require(__DIR__ . '/_translation.php') : []
-);
+$db = file_exists(__DIR__ . '/_db.php') ? require(__DIR__ . '/_db.php') : [];
+$url = file_exists(__DIR__ . '/_url.php') ? require(__DIR__ . '/_url.php') : [];
+$user = file_exists(__DIR__ . '/_user.php') ? require(__DIR__ . '/_user.php') : [];
+$mailer = file_exists(__DIR__ . '/_mail.php') ? require(__DIR__ . '/_mailer.php') : [];
+$request = file_exists(__DIR__ . '/_request.php') ? require(__DIR__ . '/_request.php') : [];
+$session = file_exists(__DIR__ . '/_session.php') ? require(__DIR__ . '/_session.php') : [];
+$translation = file_exists(__DIR__ . '/_translation.php') ? require(__DIR__ . '/_translation.php') : [];
 
 $config = [
     'id' => 'app-common',
     'name' => 'BeeCMS',
     'version' => '1.0',
-    'language' => 'ru-RU',
-    'sourceLanguage' => 'ru-RU',
+    'charset' => 'utf-8',
+    'sourceLanguage' => 'ru-RU', // основной язык системы
+    'language' => 'ru-RU', // язык перевода
+    'timeZone' => 'Europe/Moscow',
     'layout' => 'index',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-        'db' => isset($params['db']) ? $params['db'] : [],
-        'urlManager' => isset($params['urlManager']) ? $params['urlManager'] : [],
-        'user' => isset($params['user']) ? $params['user'] : [],
-        'mailer' => isset($params['mailer']) ? $params['mailer'] : [],
-        'request' => isset($params['request']) ? $params['request'] : [],
-        'session' => isset($params['session']) ? $params['session'] : [],
-        'i18n' => isset($params['i18n']) ? $params['i18n'] : [],
+        'db' => $db,
+        'urlManager' => $url,
+        'user' => $user,
+        'mailer' => $mailer,
+        'request' => $request,
+        'session' => $session,
+        'i18n' => $translation,
 
         'cache' => [
             'class' => 'yii\caching\FileCache',
